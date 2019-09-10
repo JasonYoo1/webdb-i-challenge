@@ -35,7 +35,7 @@ server.get('/accounts/:id', (req,res)=>{
 });
 server.post('/accounts', (req, res) => {
     db ('accounts')
-    .insert(req.body, 'id')
+    .insert(req.body, 'id')//array of id's
         .then(response => {
             res.status(200).json({message: `account# ${response} added`});
         })
