@@ -21,4 +21,19 @@ server.get('/accounts', (req, res) => {
         })
 });
 
+server.get('/:id', (req,res)=>{
+    const {id} = req.params
+     db('accounts')
+        .where({id})
+        .first()
+        .then(accounts =>{
+            res.status(200).json(accounts)
+        })
+        .catch(err=>{
+            res.status(500).json({error: 'no account with this ID'})
+        })
+});
+
+
+
 module.exports = server;
